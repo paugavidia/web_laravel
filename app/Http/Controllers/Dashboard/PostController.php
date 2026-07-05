@@ -4,17 +4,17 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-       // echo "Post";
-       /*return Post::create(
+        /*
+        echo "Post";
+       return Post::create(
             ['title' => "test",
              'slug' => "test",
              'content' => "test",
@@ -22,20 +22,26 @@ class PostController extends Controller
              'description' => "test",
              'posted' => "not",
              'image' => "test"]
-        ); */
+        ); 
 
-        //dd(Post::get());
-       /* $posts = Post::get();
-        return $posts[1]; */
+        dd(Post::get());
+       $posts = Post::get();
+        return $posts[1]; 
 
         foreach($posts as $post){
             echo $post->title;
             echo "<br>";
         }
 
-        //return Post::get();
+        return Post::get();
+        */
+        Category::create([
+            'title' => 'cate 2',
+            'slug' => 'cate-2',
+        ]);
 
     } 
+    
 
     /**
      * Show the form for creating a new resource.
