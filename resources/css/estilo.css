@@ -9,3 +9,9 @@ button, input, select, optgroup, textarea {
     padding: 2px;
 }
 
+*, :after, :before, ::backdrop {
+    box-sizing: border-box;
+    border: 4px violet;
+    margin: 4px;
+    padding: 2px;
+}

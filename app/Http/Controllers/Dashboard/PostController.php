@@ -34,12 +34,15 @@ class PostController extends Controller
         //dd($request->all());
        
         Post::create($request->all());
-        return to_route("post.index");
+        return to_route("post.index")->with('status', 'Post creado');
     }
 
     public function show(Post $post)
     {
-        //
+        //dd($id);
+        //$post = Post::find($id);
+        //dd($post);
+        return view('dashboard.post.show', compact('post'));
     }
 
     public function edit(Post $post)
@@ -58,12 +61,13 @@ class PostController extends Controller
         }
  
          $post->update($data);
-               return to_route("post.index");
+               return to_route("post.index")->with('status', 'Post actualizado');
     }
 
     public function destroy(Post $post)
     {
          $post->delete();
-                return to_route("post.index");
+                return to_route("post.index")->with('status', 'Post eliminado');
     }
+
 }

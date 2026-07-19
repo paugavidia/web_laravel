@@ -8,6 +8,27 @@
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/estilo.css'])
 </head>
 <body>
+    <form method="POST" action="{{ route('logout') }}">
+        @csrf
+        <button type="submit">
+            Cerrar Sesión
+        </button>
+    </form>
+
+    <br>
+    <form method="GET" action="{{ route('dashboard') }}">
+        @csrf
+        <button type="submit">
+         Dashboard
+        </button>
+    </form>
+    <br>
+
+     @auth
+        <p>Bienvenido, <b>{{ auth()->user()->name }}</b></p>
+    @endauth
+    <br>
+
 
     @if (session('status'))
         {{ session('status') }}
@@ -15,6 +36,10 @@
     @endif
 
     @yield('content')
+    <br>
+    <div>
+        @yield('contenido2')
+    </div>
 
 </body>
 </html>
