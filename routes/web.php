@@ -4,8 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Models\Post;
+use App\Models\Category;
+use App\Models\User;
+use App\Models\Profile;
+use App\Models\Tag;
 use App\Http\Controllers\BaseDatosController;
 use App\Http\Controllers\blog\BlogController;
+use App\Http\Controllers\CourseController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -57,4 +64,39 @@ Route::group(['prefix' => 'blog'], function () {
        Route::get('', [BlogController::class, 'index'])->name('blog.index');
        Route::get('detail/{post}', [BlogController::class, 'show'])->name('blog.show');
     });
+});
+
+Route::get('/blade', [CourseController::class, 'index']);
+
+Route::get('/relacion', function () {
+
+// ejemplo de relacion uno es a muchos
+    /*$user = User::find(1);
+    $perfil = $user->profile;
+    $profile = Profile::find(1);
+    $usuario =$profile->user;
+    //dd($usuario);*/
+
+    //Ejemplo de relacio una es a muchos
+
+    /*$categorias = Post::find(1)->category;
+    //dd($categorias);
+    //dd($categorias['title']);
+    $post = Category::find(1)->posts;
+    dd($post);*/
+
+    //Ejemplo de la relacion muchos a muchos
+/*
+    //$post_tags = Post::find(1)->tags;
+    //dd($post_tags);
+   //$tag_posts = Tag::find(1)->posts;
+    //dd($tag_posts);
+    $post2 = Post::find(2);
+    $tag1 = Tag::find(1);
+    $tag2 = Tag::find(2);
+    //$post2->tags()->attach($tag1);
+   // $post2->tags()->detach($tag1);
+   //$tag2->posts()->attach(3,4);
+   $tag2->posts()->sync(1,2,3,4);
+   */
 });
